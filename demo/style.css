@@ -1,0 +1,59 @@
+html {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 16px;
+}
+.wrapper {
+	width: 960px;
+	margin: 0 auto;
+	padding: 60px;
+}
+
+.central {
+	height: 400px;
+}
+
+.input,
+.output {
+	float: left;
+	width: 480px;
+}
+
+.input textarea,
+.output textarea {
+	width: 462px;
+	margin: 1px;
+	height: 380px;
+	resize: none;
+	padding: 5px;
+	font-size: 16px;
+	font-family: Monaco, Lucidatypewriter, monospace;
+}
+
+.settings {
+	margin: 40px 0;
+	padding: 20px;
+	background: #ccc;
+	height: 70px;
+}
+
+.settings ul {
+	list-style: none;
+	padding: 0;
+	float: right;
+}
+
+.settings li {
+	margin-left: 20px;
+	float: left;
+}
+
+.settings h2 {
+	float: left;
+}
+
+.settings input {
+	text-align: center;
+	font-size: 16px;
+	width: 30px;
+	height: 30px;
+}

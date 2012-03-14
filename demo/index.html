@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>AIC Transcripter</title>
+	<script type="text/javascript" src="../aic.js"></script>
+	<script type="text/javascript" src="http://rob.hotmonkeystudios.com/EvoJS/evo.js"></script>
+	<script type="text/javascript" src="demo.js"></script>
+
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrapper">
+	<h1>AIC Transcripter</h1>
+	<p>Decode AIC or encode data by pasting it into the input textarea below. The output will be displayed in the output textarea.</p>
+	<p>AIC Settings can be modified within the setting menu at the bottom of the page.</p>
+	<div class="central">
+		<div class="input">
+			<label for="input">Input</label><br><textarea name="input" id="input" cols="30" rows="10"></textarea>
+		</div>
+		<div class="output">
+			<label for="output">Output</label><br><textarea disabled name="output" id="output" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+	<div class="settings">
+		<h2>Token Characters</h2>
+		<ul>
+			<li><input id="token1" type="text" value=""></li>
+			<li><input id="token2" type="text" value=""></li>
+			<li><input id="token3" type="text" value=""></li>
+			<li><input id="token4" type="text" value=""></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
