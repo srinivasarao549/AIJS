@@ -23,9 +23,14 @@ fs.readFile(args.url, 'utf8', function (err, data) {
 	}
 
 	if(encodeData) {
-		process.stdout.write(AIC.encode(data));
+		AIC.encode(data, function(data) {
+			process.stdout.write(data);
+		});
+
 	} else {
-		process.stdout.write(AIC.decode(data));
+		AIC.decode(data, function(data) {
+			process.stdout.write(data);
+		});
 	}
 });
 

@@ -80,9 +80,15 @@ e(window).on('load', function() {
 	function transcribe(input) {
 		try {
 			if(!!input.match(regex)) {
-				output.value(AIC.encode(input));
+				output.value('encoding...');
+				AIC.encode(input, function(data) {
+					output.value(data);
+				});
 			} else {
-				output.value(AIC.decode(input));
+				output.value('decoding...');
+				AIC.decode(input, function(data) {
+					output.value(data);
+				});
 			}
 		} catch(err) {
 			output.value('');

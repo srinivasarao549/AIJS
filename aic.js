@@ -44,33 +44,68 @@
 	 * Encodes text into AIC
 	 * @param data
 	 */
-	function encode(data) {
-		var aic;
+	function encode(data, callback) {
+		var aic, i;
 
-		data = data.split('');
 		aic = '';
-
-		while(data.length) {
-			aic += tokenize(data.shift());
+		if(typeof data === 'string')  {
+			data = data.split('');
 		}
-		return aic;
+
+		i = 0;
+		while(data.length) {
+
+			//proccess no more than 24kb a tick
+			if(i >= 24576) {
+				setTimeout(function() {
+					encode(data, function(_aic) {
+						aic += _aic;
+
+						callback(aic);
+					});
+				}, 1);
+				return;
+			} else {
+				aic += tokenize(data.shift());
+				i += 1;
+			}
+		}
+
+		callback(aic);
 	}
 
 	/**
 	 * Decodes AIC to text
 	 * @param aic
 	 */
-	function decode(aic) {
-		var data;
+	function decode(aic, callback) {
+		var data, i;
 
 		data = '';
-		aic = aic.split('');
-
-		while(aic.length) {
-			data += deTokenize(aic.shift() + aic.shift() + aic.shift() + aic.shift());
+		if(typeof aic === 'string')  {
+			aic = aic.split('');
 		}
 
-		return data;
+		i = 0;
+		while(aic.length) {
+
+			//proccess no more than 512bytes a tick
+			if(i >= 24576) {
+				setTimeout(function() {
+					decode(aic, function(_data) {
+						data += _data;
+
+						callback(data);
+					});
+				}, 1);
+				return;
+			} else {
+				data += deTokenize(aic.splice(0, 4).join(''));
+				i += 1;
+			}
+		}
+
+		callback(data);
 	}
 
 	/**
